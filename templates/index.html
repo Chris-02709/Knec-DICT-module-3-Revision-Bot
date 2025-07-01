@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNEC DICT Module 3 Revision Bot</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #0056b3; /* Darker blue for heading */
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        label {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #a3daff; /* Light blue border */
+            border-radius: 6px;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 90px;
+            font-size: 1.05em;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .response-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e0f2f7; /* Very light blue */
+            border: 1px solid #b3e0ff; /* Medium light blue border */
+            border-radius: 8px;
+            min-height: 80px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 0.85em;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 KNEC DICT Module 3 Revision Bot</h1>
+        <p>Your AI study companion for KNEC DICT Module 3. Ask me about any topic!</p>
+        <form method="POST">
+            <label for="topic">Enter a Module 3 Topic:</label>
+            <textarea id="topic" name="topic" placeholder="e.g., Explain System Development Life Cycle (SDLC) phases."></textarea>
+            <button type="submit">Get Explanation</button>
+        </form>
+        {% if explanation %}
+        <div class="response-box">
+            <strong>Here's an explanation for "{{ topic }}" from the perspective of KNEC DICT Module 3:</strong><br><br>
+            {{ explanation }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="footer">
+        Crafted by Chris Ngatia for educational use | Powered by Google Gemini AI and hosted on Replit.
+        <br>
+        Built for KNEC Diploma in ICT Module 3 revision.
+        <br>
+        (Using free tiers - please be mindful of usage limits.)
+    </div>
+</body>
+</html>
