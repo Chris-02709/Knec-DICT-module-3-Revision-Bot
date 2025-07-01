@@ -190,36 +190,47 @@
             border-radius: 3px;
         }
         
-        /* Enhanced Code block styling */
+        /* Enhanced markdown code styling */
         .response-box code {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #e2e8f0;
-            padding: 4px 10px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 6px;
             font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
-            font-size: 0.92em;
-            border: 1px solid #334155;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            font-size: 0.9em;
+            border: 1px solid #475569;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
             font-weight: 500;
-            letter-spacing: 0.3px;
-            position: relative;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
         }
         
         .response-box pre {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #e2e8f0;
-            padding: 24px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            color: #f8fafc;
+            padding: 28px;
+            border-radius: 16px;
             overflow-x: auto;
             font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
-            border: 2px solid #334155;
-            margin: 25px 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-            font-size: 0.9em;
-            line-height: 1.6;
+            border: 2px solid #475569;
+            margin: 28px 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            font-size: 0.92em;
+            line-height: 1.7;
             position: relative;
             font-weight: 400;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
+        }
+        
+        .response-box pre code {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            color: inherit !important;
+            font-size: inherit !important;
+            white-space: pre-wrap;
         }
         
         /* Code block header styling */
@@ -394,73 +405,123 @@
             content: "";
         }
         
-        /* Colored heading styles for AI responses */
+        /* Enhanced markdown heading styles with beautiful colors */
         .response-box h1 {
-            color: #1e40af;
-            font-size: 1.8em;
-            font-weight: 700;
-            margin: 20px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 3px solid #3b82f6;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: #0f172a !important;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-size: 2em;
+            font-weight: 800;
+            margin: 25px 0 18px 0;
+            padding: 15px 0;
+            border-bottom: 4px solid #3b82f6;
+            position: relative;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .response-box h1::before {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #7c3aed);
+            border-radius: 2px;
         }
         
         .response-box h2 {
-            color: #2563eb;
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 18px 0 12px 0;
-            padding-left: 15px;
-            border-left: 4px solid #60a5fa;
-            background: rgba(59, 130, 246, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
+            color: #1e40af !important;
+            font-size: 1.6em;
+            font-weight: 700;
+            margin: 22px 0 14px 0;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.05));
+            border-left: 5px solid #3b82f6;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+        }
+        
+        .response-box h2::before {
+            content: "🔵";
+            margin-right: 10px;
+            font-size: 0.8em;
         }
         
         .response-box h3 {
-            color: #1d4ed8;
-            font-size: 1.3em;
+            color: #2563eb !important;
+            font-size: 1.4em;
             font-weight: 600;
-            margin: 15px 0 10px 0;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #93c5fd;
+            margin: 18px 0 12px 0;
+            padding: 8px 15px;
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid #60a5fa;
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .response-box h3::before {
+            content: "▶️";
+            margin-right: 8px;
+            font-size: 0.7em;
         }
         
         .response-box h4 {
-            color: #2563eb;
-            font-size: 1.2em;
-            font-weight: 500;
-            margin: 12px 0 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #1d4ed8 !important;
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            padding: 6px 12px;
+            background: rgba(29, 78, 216, 0.06);
+            border-left: 3px solid #93c5fd;
+            border-radius: 4px;
         }
         
         .response-box h4::before {
-            content: "▶";
-            color: #60a5fa;
+            content: "🔸";
+            margin-right: 6px;
             font-size: 0.8em;
         }
         
         .response-box h5 {
-            color: #3730a3;
-            font-size: 1.1em;
+            color: #3730a3 !important;
+            font-size: 1.15em;
             font-weight: 500;
-            margin: 10px 0 6px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.95em;
+            margin: 12px 0 8px 0;
+            padding: 4px 10px;
+            background: rgba(55, 48, 163, 0.05);
+            border-left: 2px solid #a78bfa;
+            border-radius: 3px;
+        }
+        
+        .response-box h5::before {
+            content: "🔹";
+            margin-right: 5px;
+            font-size: 0.7em;
         }
         
         .response-box h6 {
-            color: #4338ca;
-            font-size: 1em;
+            color: #4338ca !important;
+            font-size: 1.05em;
             font-weight: 500;
-            margin: 8px 0 5px 0;
+            margin: 10px 0 6px 0;
+            padding: 2px 8px;
+            background: rgba(67, 56, 202, 0.04);
+            border-left: 2px solid #c4b5fd;
+            border-radius: 2px;
             font-style: italic;
+        }
+        
+        .response-box h6::before {
+            content: "🔸";
+            margin-right: 4px;
+            font-size: 0.6em;
         }
         
         /* Special styling for numbered sections */
@@ -507,7 +568,7 @@
                 <span class="ai-badge">AI Expert</span>
                 <span>📚 KNEC DICT Module 3 Analysis: "{{ topic }}"</span>
             </div>
-            {{ explanation }}
+            {{ explanation|safe }}
         </div>
         {% endif %}
     </div>

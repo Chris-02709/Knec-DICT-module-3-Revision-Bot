@@ -1,6 +1,8 @@
 import os
 import google.generativeai as genai
 from flask import Flask, request, render_template
+import markdown
+from markupsafe import Markup
 
 app = Flask(__name__)
 
@@ -108,7 +110,10 @@ def index():
                         {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
                     ]
                 )
-                explanation_text = gemini_response.text
+                # Convert to markdown with custom extensions
+                raw_text = gemini_response.text
+                md = markdown.Markdown(extensions=['codehilite', 'fenced_code', 'tables'])
+                explanation_text = Markup(md.convert(raw_text))
             except Exception as e:
                 explanation_text = f"An error occurred: {e}. Please try again later. (API usage limits?) Ensure your topic is appropriate."
         else:
