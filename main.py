@@ -14,11 +14,13 @@ try:
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 except KeyError:
     print("Error: GOOGLE_API_KEY environment variable not set.")
-    print("Please add your Gemini API key as a secret in Replit (padlock icon).")
+    print(
+        "Please add your Gemini API key as a secret in Replit (padlock icon).")
     exit(1)
 
 # Initialize the Gemini Pro model
 model = genai.GenerativeModel('gemini-1.5-flash')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -100,19 +102,33 @@ def index():
                 gemini_response = model.generate_content(
                     prompt,
                     generation_config=genai.types.GenerationConfig(
-                        temperature=0.4, # Slightly higher for more engaging and dynamic responses
-                        max_output_tokens=2500, # More tokens for comprehensive, well-structured responses
+                        temperature=
+                        0.4,  # Slightly higher for more engaging and dynamic responses
+                        max_output_tokens=
+                        2500,  # More tokens for comprehensive, well-structured responses
                     ),
                     safety_settings=[
-                        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-                        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-                        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-                        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-                    ]
-                )
+                        {
+                            "category": "HARM_CATEGORY_HARASSMENT",
+                            "threshold": "BLOCK_NONE"
+                        },
+                        {
+                            "category": "HARM_CATEGORY_HATE_SPEECH",
+                            "threshold": "BLOCK_NONE"
+                        },
+                        {
+                            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                            "threshold": "BLOCK_NONE"
+                        },
+                        {
+                            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                            "threshold": "BLOCK_NONE"
+                        },
+                    ])
                 # Convert to markdown with custom extensions
                 raw_text = gemini_response.text
-                md = markdown.Markdown(extensions=['codehilite', 'fenced_code', 'tables'])
+                md = markdown.Markdown(
+                    extensions=['codehilite', 'fenced_code', 'tables'])
                 explanation_text = Markup(md.convert(raw_text))
             except Exception as e:
                 explanation_text = f"An error occurred: {e}. Please try again later. (API usage limits?) Ensure your topic is appropriate."
@@ -120,6 +136,7 @@ def index():
             explanation_text = "Please enter a topic to get an explanation."
 
     return render_template('index.html', explanation=explanation_text)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
