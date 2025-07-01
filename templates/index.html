@@ -126,6 +126,64 @@
             letter-spacing: 0.5px;
             box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
         }
+        
+        /* Enhanced formatting for AI responses */
+        .response-box {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Smart bullet point styling */
+        .response-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+        
+        .response-box li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        /* Code block styling */
+        .response-box code {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #475569;
+        }
+        
+        .response-box pre {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #475569;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Highlight sections */
+        .response-box strong {
+            color: #0369a1;
+            font-weight: 600;
+        }
+        
+        /* Pro tips and key points styling */
+        .response-box p:has-text("💡"), 
+        .response-box p:has-text("⭐"),
+        .response-box p:has-text("🎯") {
+            background: rgba(14, 165, 233, 0.1);
+            padding: 12px;
+            border-left: 4px solid #0ea5e9;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
         .footer {
             margin-top: 25px;
             font-size: 0.85em;

@@ -40,8 +40,13 @@ def index():
                 
                 🎯 STYLE GUIDELINES:
                 - Use confident, authoritative language
-                - Include relevant emojis for visual appeal
-                - Format with clear headings and bullet points
+                - Include relevant emojis for visual appeal (🔹 for bullet points, ⭐ for key points, 💡 for tips)
+                - Format with smart listing styles:
+                  • Use "🔹" for main bullet points
+                  • Use "  ▪️" for sub-points (with 2 spaces for indentation)
+                  • Use "⭐" for important highlights
+                  • Use "💡 Pro Tip:" for expert insights
+                  • Use "🎯 Key Takeaway:" for summaries
                 - Add code examples with proper syntax highlighting when relevant
                 - Use analogies to make complex concepts relatable
                 - Include industry terminology but explain it clearly
