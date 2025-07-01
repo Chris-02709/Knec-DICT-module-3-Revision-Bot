@@ -184,6 +184,97 @@
             border-radius: 6px;
             margin: 15px 0;
         }
+        
+        /* Colored heading styles for AI responses */
+        .response-box h1 {
+            color: #1e40af;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 20px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3b82f6;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .response-box h2 {
+            color: #2563eb;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 18px 0 12px 0;
+            padding-left: 15px;
+            border-left: 4px solid #60a5fa;
+            background: rgba(59, 130, 246, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .response-box h3 {
+            color: #1d4ed8;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #93c5fd;
+        }
+        
+        .response-box h4 {
+            color: #2563eb;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin: 12px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .response-box h4::before {
+            content: "▶";
+            color: #60a5fa;
+            font-size: 0.8em;
+        }
+        
+        .response-box h5 {
+            color: #3730a3;
+            font-size: 1.1em;
+            font-weight: 500;
+            margin: 10px 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95em;
+        }
+        
+        .response-box h6 {
+            color: #4338ca;
+            font-size: 1em;
+            font-weight: 500;
+            margin: 8px 0 5px 0;
+            font-style: italic;
+        }
+        
+        /* Special styling for numbered sections */
+        .response-box h1:has-text("1."),
+        .response-box h2:has-text("1."),
+        .response-box h3:has-text("1.") {
+            position: relative;
+        }
+        
+        .response-box h1:has-text("1.")::before,
+        .response-box h2:has-text("1.")::before,
+        .response-box h3:has-text("1.")::before {
+            content: "🔥";
+            margin-right: 8px;
+        }
+        
+        /* Hover effects for headings */
+        .response-box h1:hover,
+        .response-box h2:hover,
+        .response-box h3:hover {
+            transform: translateX(5px);
+            transition: transform 0.2s ease;
+        }
         .footer {
             margin-top: 25px;
             font-size: 0.85em;
