@@ -130,6 +130,15 @@
         /* Enhanced formatting for AI responses */
         .response-box {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+        
+        /* Clean paragraph styling */
+        .response-box p {
+            margin: 12px 0;
+            font-size: 1.05em;
+            text-align: justify;
         }
         
         /* Smart bullet point styling */
@@ -140,49 +149,109 @@
         }
         
         .response-box li {
-            margin: 8px 0;
-            padding-left: 20px;
+            margin: 10px 0;
+            padding: 8px 0 8px 25px;
             position: relative;
+            font-size: 1.05em;
+            border-left: 2px solid #e2e8f0;
+            padding-left: 15px;
+            margin-left: 10px;
+        }
+        
+        /* Custom bullet points */
+        .response-box li::before {
+            content: "▶";
+            position: absolute;
+            left: -8px;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        /* Key terms and definitions styling */
+        .response-box strong {
+            color: #1e40af;
+            font-weight: 600;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border-left: 3px solid #3b82f6;
+            display: inline-block;
+            margin: 2px 0;
+        }
+        
+        /* Emphasis styling */
+        .response-box em {
+            color: #7c3aed;
+            font-style: normal;
+            font-weight: 500;
+            background: rgba(124, 58, 237, 0.05);
+            padding: 1px 4px;
+            border-radius: 3px;
         }
         
         /* Code block styling */
         .response-box code {
             background: linear-gradient(135deg, #1e293b, #334155);
             color: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 3px 8px;
+            border-radius: 6px;
             font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            font-size: 0.95em;
             border: 1px solid #475569;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .response-box pre {
             background: linear-gradient(135deg, #1e293b, #334155);
             color: #f1f5f9;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 18px;
+            border-radius: 10px;
             overflow-x: auto;
             font-family: 'Courier New', monospace;
             border: 1px solid #475569;
-            margin: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin: 20px 0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            font-size: 0.95em;
         }
         
-        /* Highlight sections */
-        .response-box strong {
-            color: #0369a1;
-            font-weight: 600;
-        }
-        
-        /* Pro tips and key points styling */
-        .response-box p:has-text("💡"), 
-        .response-box p:has-text("⭐"),
-        .response-box p:has-text("🎯") {
-            background: rgba(14, 165, 233, 0.1);
-            padding: 12px;
+        /* Special highlight boxes */
+        .response-box p:contains("💡"), 
+        .response-box p:contains("⭐"),
+        .response-box p:contains("🎯"),
+        .response-box div:contains("💡"),
+        .response-box div:contains("⭐"),
+        .response-box div:contains("🎯") {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(59, 130, 246, 0.05));
+            padding: 15px;
             border-left: 4px solid #0ea5e9;
+            border-radius: 8px;
+            margin: 18px 0;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
+            font-weight: 500;
+        }
+        
+        /* Numbered sections styling */
+        .response-box p:contains("Layer "),
+        .response-box p:contains("Step "),
+        .response-box p:contains("Phase ") {
+            background: rgba(16, 185, 129, 0.05);
+            padding: 12px 15px;
+            border-left: 4px solid #10b981;
             border-radius: 6px;
             margin: 15px 0;
+            font-weight: 500;
+            color: #065f46;
+        }
+        
+        /* Clean up asterisk formatting */
+        .response-box {
+            white-space: pre-wrap;
+        }
+        
+        /* Remove bold asterisk formatting visually */
+        .response-box::before {
+            content: "";
         }
         
         /* Colored heading styles for AI responses */
