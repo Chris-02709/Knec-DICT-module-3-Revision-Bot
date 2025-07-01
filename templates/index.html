@@ -190,29 +190,169 @@
             border-radius: 3px;
         }
         
-        /* Code block styling */
+        /* Enhanced Code block styling */
         .response-box code {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            border: 1px solid #475569;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+            font-size: 0.92em;
+            border: 1px solid #334155;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            position: relative;
         }
         
         .response-box pre {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: #f1f5f9;
-            padding: 18px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
             overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            border: 1px solid #475569;
-            margin: 20px 0;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-            font-size: 0.95em;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+            border: 2px solid #334155;
+            margin: 25px 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            font-size: 0.9em;
+            line-height: 1.6;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+        
+        /* Code block header styling */
+        .response-box pre::before {
+            content: "💻 Code Example";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        /* Syntax highlighting for common patterns */
+        .response-box pre {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            position: relative;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        /* Copy button styling */
+        .response-box pre:hover::after {
+            content: "📋 Click to copy";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.7em;
+            font-family: 'Segoe UI', sans-serif;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Better inline code styling */
+        .response-box p code, 
+        .response-box li code {
+            background: linear-gradient(135deg, #1e40af, #3730a3);
+            color: #ddd6fe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-weight: 500;
+            border: 1px solid #4338ca;
+            box-shadow: 0 1px 3px rgba(67, 56, 202, 0.3);
+        }
+        
+        /* Terminal/Command styling */
+        .response-box pre[data-lang="bash"],
+        .response-box pre[data-lang="shell"],
+        .response-box pre[data-lang="terminal"] {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border-left: 4px solid #10b981;
+        }
+        
+        .response-box pre[data-lang="bash"]::before,
+        .response-box pre[data-lang="shell"]::before,
+        .response-box pre[data-lang="terminal"]::before {
+            content: "🖥️ Terminal";
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        /* Language-specific styling */
+        .response-box pre[data-lang="python"]::before {
+            content: "🐍 Python";
+            background: linear-gradient(135deg, #3776ab, #ffd43b);
+            color: #2d3748;
+        }
+        
+        .response-box pre[data-lang="javascript"]::before,
+        .response-box pre[data-lang="js"]::before {
+            content: "⚡ JavaScript";
+            background: linear-gradient(135deg, #f7df1e, #f39c12);
+            color: #2d3748;
+        }
+        
+        .response-box pre[data-lang="html"]::before {
+            content: "🌐 HTML";
+            background: linear-gradient(135deg, #e34f26, #f06529);
+        }
+        
+        .response-box pre[data-lang="css"]::before {
+            content: "🎨 CSS";
+            background: linear-gradient(135deg, #1572b6, #33a9dc);
+        }
+        
+        .response-box pre[data-lang="sql"]::before {
+            content: "🗄️ SQL";
+            background: linear-gradient(135deg, #336791, #4479a1);
+        }
+        
+        /* Code block with title */
+        .code-title {
+            background: linear-gradient(135deg, #374151, #4b5563);
+            color: #f9fafb;
+            padding: 8px 16px;
+            border-radius: 8px 8px 0 0;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 20px 0 0 0;
+            border: 1px solid #6b7280;
+            border-bottom: none;
+        }
+        
+        .code-title + pre {
+            margin-top: 0;
+            border-radius: 0 0 12px 12px;
+            border-top: none;
+        }
+        
+        /* Responsive code blocks */
+        @media (max-width: 768px) {
+            .response-box pre {
+                padding: 16px;
+                font-size: 0.85em;
+                margin: 15px 0;
+            }
+            
+            .response-box pre::before {
+                font-size: 0.7em;
+                padding: 3px 8px;
+            }
         }
         
         /* Special highlight boxes */

@@ -34,9 +34,10 @@ def index():
                 📋 RESPONSE STRUCTURE:
                 1. Start with a brief, punchy definition or overview
                 2. Break down key concepts with clear explanations
-                3. Include practical examples or real-world applications
-                4. Add useful tips, best practices, or "pro insights"
-                5. End with a quick summary or key takeaway
+                3. Include COMPLETE, RUNNABLE code examples with full implementations
+                4. Add practical real-world applications and use cases
+                5. Include useful tips, best practices, or "pro insights"
+                6. End with a quick summary or key takeaway
                 
                 🎯 FORMATTING GUIDELINES - VERY IMPORTANT:
                 - DO NOT use asterisks (*) around words for emphasis or bold formatting
@@ -50,6 +51,22 @@ def index():
                   • Use "🎯 Key Takeaway:" for summaries
                   • Use "⭐ Important:" for critical points
                 
+                💻 CODE EXAMPLES - CRITICAL REQUIREMENTS:
+                - ALWAYS provide COMPLETE, RUNNABLE code examples
+                - Include full file contents, not snippets
+                - Add proper imports, declarations, and all necessary code
+                - Use proper syntax highlighting language indicators
+                - Format code blocks with:
+                  ```python
+                  # Complete working example here
+                  ```
+                - Include multiple examples for different scenarios when relevant
+                - Add comments explaining each part of the code
+                - Show both basic and advanced implementations
+                - Include example inputs and expected outputs
+                - When showing HTML/CSS, provide complete, functional web pages
+                - For database examples, include full schema and sample data
+                
                 EXAMPLES OF GOOD FORMATTING:
                 ✅ Layer 1: Network Access Layer
                 ❌ **Layer 1: Network Access Layer:**
@@ -57,13 +74,23 @@ def index():
                 ✅ This handles physical transmission
                 ❌ This **handles** physical transmission
                 
+                CODE EXAMPLE REQUIREMENTS:
+                ✅ Complete working Python script with all imports
+                ✅ Full HTML page with CSS and JavaScript if needed
+                ✅ Complete database schema with sample queries
+                ❌ Code snippets with "..." or incomplete examples
+                ❌ Missing imports or incomplete function definitions
+                
                 - Write in clear, professional paragraphs
                 - Use proper headings (# ## ###) when needed
-                - Add code examples with proper syntax when relevant
+                - Add COMPLETE code examples with proper syntax highlighting
+                - Include practical illustrations and diagrams when helpful
                 - Use analogies to make complex concepts relatable
                 - Include industry terminology but explain it clearly
+                - Show step-by-step implementations
+                - Provide multiple working examples for different use cases
                 
-                💡 Make it sound like advice from a seasoned tech professional who really knows their stuff, but keep the formatting clean and readable!
+                💡 Make it sound like advice from a seasoned tech professional who really knows their stuff, with production-ready code examples that students can actually run and learn from!
                 
                 Topic to explain: "{user_topic}"
                 """
