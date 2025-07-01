@@ -73,15 +73,58 @@
         }
         .response-box {
             margin-top: 30px;
-            padding: 20px;
-            background-color: #e0f2f7; /* Very light blue */
-            border: 1px solid #b3e0ff; /* Medium light blue border */
-            border-radius: 8px;
-            min-height: 80px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+            min-height: 120px;
             white-space: pre-wrap;
             word-wrap: break-word;
-            line-height: 1.7;
-            font-size: 1.05em;
+            line-height: 1.8;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .response-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6, #8b5cf6, #ec4899);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .response-header {
+            color: #0369a1;
+            font-weight: bold;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bae6fd;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ai-badge {
+            background: linear-gradient(45deg, #0ea5e9, #3b82f6);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
         }
         .footer {
             margin-top: 25px;
@@ -102,7 +145,10 @@
         </form>
         {% if explanation %}
         <div class="response-box">
-            <strong>Here's an explanation for "{{ topic }}" from the perspective of KNEC DICT Module 3:</strong><br><br>
+            <div class="response-header">
+                <span class="ai-badge">AI Expert</span>
+                <span>📚 KNEC DICT Module 3 Analysis: "{{ topic }}"</span>
+            </div>
             {{ explanation }}
         </div>
         {% endif %}

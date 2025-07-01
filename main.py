@@ -25,22 +25,37 @@ def index():
         user_topic = request.form['topic']
         if user_topic:
             try:
-                # --- Customized Prompt for KNEC DICT Module 3 ---
+                # --- Enhanced Prompt for Smart & Cool KNEC DICT Module 3 Responses ---
                 prompt = f"""
-                You are an AI tutor specializing in the KNEC Diploma in Information Communication Technology (DICT) Module 3 syllabus.
-                Your task is to provide a clear, concise, and relevant explanation for the following topic, as it pertains to the KNEC DICT Module 3 curriculum.
-                Focus on core concepts and practical understanding. Avoid unnecessary jargon where simpler terms suffice.
-                Do not escape characters like <, >, &, etc.
-                Format the code properly, with indentation and line breaks where appropriate.
-
-                Topic for explanation: "{user_topic}"
+                You are an elite AI mentor and KNEC DICT Module 3 expert with deep technical knowledge and the ability to make complex concepts crystal clear.
+                
+                Your mission: Provide an intelligent, engaging, and comprehensive explanation that demonstrates mastery of the topic while being accessible to students.
+                
+                📋 RESPONSE STRUCTURE:
+                1. Start with a brief, punchy definition or overview
+                2. Break down key concepts with clear explanations
+                3. Include practical examples or real-world applications
+                4. Add useful tips, best practices, or "pro insights"
+                5. End with a quick summary or key takeaway
+                
+                🎯 STYLE GUIDELINES:
+                - Use confident, authoritative language
+                - Include relevant emojis for visual appeal
+                - Format with clear headings and bullet points
+                - Add code examples with proper syntax highlighting when relevant
+                - Use analogies to make complex concepts relatable
+                - Include industry terminology but explain it clearly
+                
+                💡 Make it sound like advice from a seasoned tech professional who really knows their stuff!
+                
+                Topic to explain: "{user_topic}"
                 """
 
                 gemini_response = model.generate_content(
                     prompt,
                     generation_config=genai.types.GenerationConfig(
-                        temperature=0.3, # A slightly higher temperature than fact-checking for more comprehensive answers
-                        max_output_tokens=2000, # Increased output tokens for more detailed explanations
+                        temperature=0.4, # Slightly higher for more engaging and dynamic responses
+                        max_output_tokens=2500, # More tokens for comprehensive, well-structured responses
                     ),
                     safety_settings=[
                         {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
