@@ -7,7 +7,6 @@ from markupsafe import Markup
 app = Flask(__name__)
 
 # --- Configure Gemini API ---
-# Ensure your API key is stored securely in Replit's "Secrets"
 # Key: GOOGLE_API_KEY
 # Value: Your actual Gemini API Key
 try:
