@@ -11,16 +11,16 @@
 <body>
     <div class="container">
         <h1>🎓 KNEC DICT Module 3 Revision Bot</h1>
-        <p>Your AI study companion for KNEC DICT Module 3. Ask me about any topic!</p>
-        <form method="POST">
-            <label for="topic">Enter a Module 3 Topic:</label>
-            <textarea id="topic" name="topic" placeholder="e.g., Explain System Development Life Cycle (SDLC) phases."></textarea>
-            <button type="submit">Get Explanation</button>
-        </form>
+        <p>Stuck on a tough concept? I am your AI study companion for KNEC DICT Module 3. <br> Just type in a topic, and I’ll break it down clearly, like a helpful classmate who actually gets it.</p>
+        <form method="POST" action="/">
+  <input type="text" name="user_topic" placeholder="Enter a topic e.g. Describe the functions of each layer in the OSI model">
+  <button type="submit">Get Explanation</button>
+</form>
+
         {% if explanation %}
         <div class="response-box">
             <div class="response-header">
-                <span class="ai-badge">AI Expert</span>
+                <span class="ai-badge">AI Tutor</span>
                 <span>📚 KNEC DICT Module 3 Analysis: "{{ topic }}"</span>
             </div>
             {{ explanation|safe }}
@@ -28,7 +28,7 @@
         {% endif %}
     </div>
     <div class="footer">
-        Crafted by Chris Ngatia for educational use | Powered by Google Gemini AI and hosted on Replit.
+        &copy 2025 | Crafted by Chris Ngatia for educational use | Powered by Google Gemini AI.
         <br>
         Built for KNEC Diploma in ICT Module 3 revision.
         <br>

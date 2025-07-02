@@ -38,7 +38,7 @@ body {
             font-weight: bold;
             color: #0056b3;
         }
-        textarea {
+        input[type="text"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #a3daff; /* Light blue border */
