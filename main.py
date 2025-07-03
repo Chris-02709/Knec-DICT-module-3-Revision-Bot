@@ -2,32 +2,13 @@ import os
 import google.generativeai as genai
 from flask import Flask, request, render_template
 import markdown
-from markupsafe import Markup # Needed for |safe filter
-from flask_sqlalchemy import SQLAlchemy
+from markupsafe import Markup
+
 # If you are using a .env file for your API key locally, uncomment the next two lines:
 # from dotenv import load_dotenv
 # load_dotenv()
 
 app = Flask(__name__)
-
-# checks instance folder exists
-os.makedirs(os.path.join(app.root_path, 'instance'), exist_ok=True)
-
-# SQLite DB path
-db_path = os.path.join(app.root_path, 'instance', 'revision_bot.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-# Database Model for User Questions and Bot Answers (for logging)
-# We will keep this for logging user questions and Gemini's answers
-class Question(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user = db.Column(db.String(100))
-    question = db.Column(db.Text, nullable=False)
-    answer = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 # --- Configure Gemini API ---
 try:
@@ -42,16 +23,15 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index(): # Consolidated function handling both GET and POST for the main page
+def index():
     explanation_text = ""
-    user_topic = "" # Initialize user_topic for GET requests so it's always passed to template
+    user_topic = ""
 
     if request.method == 'POST':
-        user_topic = request.form['user_topic'] # Access 'user_topic' from the form
+        user_topic = request.form['user_topic']
         if user_topic:
             try:
                 # --- Prompt for Clean, Readable KNEC DICT Module 3 Responses ---
-                # The prompt now relies solely on Gemini's knowledge, no injected context
                 prompt = f"""
                 You are an elite AI mentor and KNEC DICT Module 3 expert with deep technical knowledge and the ability to make complex concepts crystal clear.
                 Your mission: Provide an intelligent, engaging, and comprehensive explanation that demonstrates mastery of the topic while being accessible to students.
@@ -119,22 +99,13 @@ def index(): # Consolidated function handling both GET and POST for the main pag
                 )
                 explanation_text = Markup(md.convert(raw_text))
 
-                # --- Database Storage for User Question and Bot Answer ---
-                new_question = Question(user="Guest", question=user_topic, answer=raw_text)
-                db.session.add(new_question)
-                db.session.commit()
-                # --- End Database Storage ---
-
             except Exception as e:
+                # The error message is now simpler as it won't mention SQL errors
                 explanation_text = f"An error occurred: {e}. Please try again later. (API usage limits?) Ensure your topic is appropriate."
         else:
             explanation_text = "Please enter a topic to get an explanation."
 
-    # Pass explanation_text and user_topic to the template
     return render_template('index.html', explanation=explanation_text, topic=user_topic)
-
-# The temporary /view_content route and KnecContent model are now removed,
-# as they are not needed if we are not populating a local knowledge base from PDF.
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Use PORT from environment or default to 5000
