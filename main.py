@@ -137,6 +137,5 @@ def index(): # Consolidated function handling both GET and POST for the main pag
 # as they are not needed if we are not populating a local knowledge base from PDF.
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all() # This will now only create/ensure the 'question' table
-    app.run(debug=True) # Run in debug mode for local development
+    port = int(os.environ.get('PORT', 5000))  # Use PORT from environment or default to 5000
+    app.run(host='0.0.0.0', port=port)
