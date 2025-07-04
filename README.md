@@ -38,10 +38,11 @@ Follow these steps to get your AI Tutor Bot running on your local machine using 
 * Git (for cloning the repository)
 * Visual Studio Code (or your preferred IDE)
 
-### 1. Clone the Repository
+🌐 Live Demo
+The KNEC DICT Module 3 Revision Bot is live and ready to use. It's deployed on Render, making it accessible to students anytime, anywhere.
 
-First, clone this repository to your local machine:
+👉 Try it out https://dict-module-3-revision-bot.onrender.com
+(No login required — just enter a topic and get your explanation instantly.)
 
-```bash
-git clone https://github.com/Chris-02709/Knec-DICT-module-3-Revision-Bot
-cd Knec-DICT-moduule-3-Revision-Bot
+This bot was built with Python, Flask, and Google Gemini AI, and it's tailored specifically to help diploma students revise core concepts from the KNEC ICT syllabus.
+
