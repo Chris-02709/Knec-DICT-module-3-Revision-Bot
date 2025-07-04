@@ -4,13 +4,10 @@ from flask import Flask, request, render_template
 import markdown
 from markupsafe import Markup
 
-# If you are using a .env file for your API key locally, uncomment the next two lines:
-# from dotenv import load_dotenv
-# load_dotenv()
 
 app = Flask(__name__)
 
-# --- Configure Gemini API ---
+# Configure Gemini API
 try:
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 except KeyError:
@@ -18,7 +15,7 @@ except KeyError:
     print("Please add your Gemini API key as a secret (e.g., in a .env file locally or Replit Secrets if deploying).")
     exit(1)
 
-# Initialize the Gemini Pro model
+# Initializing the Gemini Pro model
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 
@@ -93,14 +90,14 @@ def index():
                 )
                 raw_text = gemini_response.text
 
-                # Convert Markdown to HTML for display
+                # Converting Markdown to HTML for display
                 md = markdown.Markdown(
                     extensions=['codehilite', 'fenced_code', 'tables', 'extra']
                 )
                 explanation_text = Markup(md.convert(raw_text))
 
             except Exception as e:
-                # The error message is now simpler as it won't mention SQL errors
+                
                 explanation_text = f"An error occurred: {e}. Please try again later. (API usage limits?) Ensure your topic is appropriate."
         else:
             explanation_text = "Please enter a topic to get an explanation."
@@ -108,5 +105,5 @@ def index():
     return render_template('index.html', explanation=explanation_text, topic=user_topic)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Use PORT from environment or default to 5000
+    port = int(os.environ.get('PORT', 5000))  # local development & deployment port
     app.run(host='0.0.0.0', port=port)
