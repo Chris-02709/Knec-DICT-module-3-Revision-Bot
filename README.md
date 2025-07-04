@@ -43,6 +43,3 @@ Follow these steps to get your AI Tutor Bot running on your local machine using 
 
 👉 Try it out https://dict-module-3-revision-bot.onrender.com
 (No login required — just enter a topic and get your explanation instantly.)
-
-This bot was built with Python, Flask, and Google Gemini AI, and it's tailored specifically to help diploma students revise core concepts from the KNEC ICT syllabus.
-
