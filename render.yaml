@@ -6,4 +6,4 @@ services:
     startCommand: "python main.py"
     envVars:
       - key: GOOGLE_API_KEY
-        value: AIzaSyCXmXFdPiRZ0TP6h5ZAE74SsXmWrVzQjko
+        sync: false
