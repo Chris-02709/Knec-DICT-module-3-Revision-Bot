@@ -38,8 +38,8 @@ Follow these steps to get your AI Tutor Bot running on your local machine using 
 * Git (for cloning the repository)
 * Visual Studio Code (or your preferred IDE)
 
-🌐 Live Demo
-The KNEC DICT Module 3 Revision Bot is live and ready to use. It's deployed on Render, making it accessible to students anytime, anywhere.
+### 🌐 Live Demo
+* The KNEC DICT Module 3 Revision Bot is live and ready to use. It's deployed on Render, making it accessible to students anytime, anywhere.
 
 👉 Try it out https://dict-module-3-revision-bot.onrender.com
 (No login required — just enter a topic and get your explanation instantly.)
