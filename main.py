@@ -12,7 +12,6 @@ try:
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 except KeyError:
     print("Error: GOOGLE_API_KEY environment variable not set.")
-    print("Please add your Gemini API key as a secret (e.g., in a .env file locally or Replit Secrets if deploying).")
     exit(1)
 
 # Initializing the Gemini Pro model
@@ -33,8 +32,6 @@ def index():
                 You are an elite AI mentor and KNEC DICT Module 3 expert with deep technical knowledge and the ability to make complex concepts crystal clear.
                 Your mission: Provide an intelligent, engaging, and comprehensive explanation that demonstrates mastery of the topic while being accessible to students.
                 
-
-
                 📋 RESPONSE STRUCTURE:
                 1. Start with a brief, punchy definition or overview.
                 2. Break down key concepts with clear explanations.
