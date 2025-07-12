@@ -26,35 +26,24 @@ def index():
     if request.method == 'POST':
         user_topic = request.form['user_topic']
         if user_topic:
-            try:
-                # --- Prompt for Clean, Readable KNEC DICT Module 3 Responses ---
-                prompt = f"""
-                You are an elite AI mentor and KNEC DICT Module 3 expert with deep technical knowledge and the ability to make complex concepts crystal clear.
-                Your mission: Provide an intelligent, engaging, and comprehensive explanation that demonstrates mastery of the topic while being accessible to students.
-                
-                📋 RESPONSE STRUCTURE:
-                1. Start with a brief, punchy definition or overview.
-                2. Break down key concepts with clear explanations.
-                3. Include COMPLETE, RUNNABLE code examples with full implementations (if applicable to the topic).
-                4. Add practical real-world applications and use cases.
-                5. Include useful tips, best practices, or "pro insights".
-                6. End with a quick summary or key takeaway.
+            # --- START Dynamic Prompt Adjustment Logic ---
+            instruction_brevity = ""
+            instruction_code_examples_control = "" # Renamed for clarity to avoid confusion with the existing prompt section
 
-                🎯 FORMATTING GUIDELINES - VERY IMPORTANT:
-                - Use proper Markdown for all formatting.
-                - Headings: Use # for H1, ## for H2, ### for H3.
-                - Bold: Use **double asterisks** for bolding (e.g., **important term**).
-                - Italic: Use *single asterisks* for italics (e.g., *key concept*).
-                - Lists: Use `*` or `-` for unordered lists, and `1.` `2.` for ordered lists.
-                - Use clear, professional paragraphs.
-                - Add relevant emojis sparingly for visual appeal.
-                💡 Pro Tip: For expert insights.
-                🎯 Key Takeaway: For summaries.
-                ⭐ Important: For critical points.
+            # Check for explicit "briefly" or similar keywords
+            if any(kw in user_topic.lower() for kw in ["briefly", "short answer", "in brief", "concise", "summarize", "summary"]):
+                instruction_brevity = "Your answer MUST be very concise and to the point. Focus on core definitions and key differences, avoiding extensive examples or detailed breakdowns unless specifically asked for. Keep the length to a minimum, ideally one to two paragraphs if possible."
+            # Check if the question is simple/direct (you can refine these keywords or remove the length check if too restrictive)
+            elif any(kw in user_topic.lower() for kw in ["what is", "define", "explain", "meaning of", "tell me about"]) and len(user_topic.split()) < 7:
+                 instruction_brevity = "For this direct question, provide a clear, brief, and concise answer. Do not elaborate extensively unless the topic explicitly requires it. Aim for a quick, focused explanation."
 
+            # Check for explicit code/program requests (stricter control)
+            if any(kw in user_topic.lower() for kw in ["write a program", "show code", "give code example", "how to code", "program in", "script", "syntax", "implement", "coding example"]):
+                # If code is explicitly requested, include the full, detailed code example requirements
+                instruction_code_examples_control = """
                 💻 CODE EXAMPLES - CRITICAL REQUIREMENTS:
-                - Provide COMPLETE, RUNNABLE code examples ONLY WHEN THE TOPIC INVOLVES PROGRAMMING or would clearly benefit from practical implementation.
-                - Use Markdown fenced code blocks (```language\ncode\n```) for proper syntax highlighting.
+                - Provide COMPLETE, RUNNABLE code examples.
+                - Use Markdown fenced code blocks (```language\\ncode\\n```) for proper syntax highlighting.
                 - Ensure code is production-ready and can be run directly by students.
                 - Do not use code snippets with "..." or incomplete examples.
                 - Always include necessary imports, declarations, and all required code.
@@ -70,6 +59,44 @@ def index():
                 - Include example inputs and expected outputs.
                 - When showing HTML/CSS, provide complete, functional web pages.
                 - For database examples, include full schema and sample data.
+                """
+            else:
+                # If no explicit code request, strongly instruct the AI to NOT provide code examples.
+                instruction_code_examples_control = "DO NOT provide any code examples, syntax, or programming constructs unless the user's question explicitly asks for a program, code, or implementation. Focus only on theoretical explanation if not asked for code."
+            # --- END Dynamic Prompt Adjustment Logic ---
+
+
+            try:
+                # --- Prompt for Clean, Readable KNEC DICT Module 3 Responses ---
+                prompt = f"""
+                You are an elite AI mentor and KNEC DICT Module 3 expert with deep technical knowledge and the ability to make complex concepts crystal clear.
+                Your mission: Provide an intelligent, engaging, and comprehensive explanation that demonstrates mastery of the topic while being accessible to students.
+
+                **START YOUR RESPONSE IMMEDIATELY WITH A LEVEL 1 HEADING (#) THAT SERVES AS THE TITLE FOR THE EXPLANATION. DO NOT INCLUDE ANY PREAMBLE LIKE "AI Tutor" OR "KNEC DICT Module 3 Analysis:" BEFORE THE TITLE.**
+
+                {instruction_brevity} # Inject brevity instruction here
+                
+                📋 RESPONSE STRUCTURE (Adjust based on brevity instruction and code example control):
+                1. Start with a brief, punchy definition or overview.
+                2. Break down key concepts with clear explanations.
+                3. Add practical real-world applications and use cases (if appropriate and not in brief mode).
+                4. Include useful tips, best practices, or "pro insights" (if appropriate and not in brief mode).
+                5. End with a quick summary or key takeaway.
+
+                🎯 FORMATTING GUIDELINES - VERY IMPORTANT:
+                - Use proper Markdown for all formatting.
+                - Headings: Use # for H1, ## for H2, ### for H3.
+                - Bold: Use **double asterisks** for bolding (e.g., **important term**).
+                - Italic: Use *single asterisks* for italics (e.g., *key concept*).
+                - Lists: Use `*` or `-` for unordered lists, and `1.` `2.` for ordered lists.
+                - Use clear, professional paragraphs.
+                - Add relevant emojis sparingly for visual appeal.
+                💡 Pro Tip: For expert insights.
+                🎯 Key Takeaway: For summaries.
+                ⭐ Important: For critical points.
+
+                {instruction_code_examples_control} # Inject NEW code example instruction here
+
                 ❗IMPORTANT:
                 You are ONLY allowed to answer questions related to KNEC DICT Module 3 (Diploma in Information Communication Technology).
                 If a user asks anything unrelated — such as Biology, Chemistry, Cooking, Politics, or anything outside ICT — politely respond with:
@@ -102,7 +129,6 @@ def index():
                 explanation_text = Markup(md.convert(raw_text))
 
             except Exception as e:
-                
                 explanation_text = f"An error occurred: {e}. Please try again later. (API usage limits?) Ensure your topic is appropriate."
         else:
             explanation_text = "Please enter a topic to get an explanation."
